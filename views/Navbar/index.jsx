@@ -23,7 +23,7 @@ module.exports = React.createClass({
         this.props.authorizedUser.login ? (() => {
           return <ul className="nav navbar-nav pull-xs-right">
             <li className="nav-item">
-              <Link to={`/user/${this.props.authorizedUser.login}`} className="nav-link">{this.props.authorizedUser.name}</Link>
+              <Link to={`/users/${this.props.authorizedUser.name}`} className="nav-link">{this.props.authorizedUser.name}</Link>
             </li>
             <li className="nav-item">
               <a href="/logout" className="nav-link" onClick={(e) => {
@@ -36,7 +36,7 @@ module.exports = React.createClass({
         })() : (() => {
           return <ul className="nav navbar-nav pull-xs-right">
             <li className="nav-item">
-              <a href={`${RUBY_CHINA_API_URL}/account/sign_in`} target="_blank" className="nav-link">{locales.zh_CN.sign_up}</a>
+              <a href="https://ruby-china.org/account/sign_in" target="_blank" className="nav-link">{locales.zh_CN.sign_up}</a>
             </li>
             <li className="nav-item">
               <Link to="/login" className="nav-link">{locales.zh_CN.login}</Link>

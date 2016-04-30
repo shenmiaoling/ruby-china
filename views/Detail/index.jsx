@@ -2,6 +2,7 @@ import React from 'react'
 import Loader from '../Loader'
 import {locales} from '../../settings'
 import {RUBY_CHINA_API_V3_URL} from '../../constants'
+import CommentList from '../CommentList'
 require('./styles')
 module.exports = React.createClass({
   getInitialState(){
@@ -26,6 +27,8 @@ module.exports = React.createClass({
     }
     return <div className='container'>
       <h2 className='topics-detail-title'>{this.state.topic.title}</h2>
-      <div className='topics-detail-html' dangerouslySetInnerHTML={{__html:this.state.topic.body_html}}/></div>
+      <div className='topics-detail-html' dangerouslySetInnerHTML={{__html:this.state.topic.body_html}}/>
+      <CommentList source={`${RUBY_CHINA_API_V3_URL}/topics/${this.props.params.id}/replies`}/>
+      </div>
   }
 })

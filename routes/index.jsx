@@ -13,13 +13,11 @@ import Detail from '../views/Detail'
 import Latest from '../views/Latest'
 import Search from '../views/Search'
 import Profile from '../views/Profile'
-import Paging from '../views/Paging'
 
 module.exports = () => {
   return <Router history={browserHistory}>
     <Route path="/" component={Application}>
       <IndexRoute component={Home} />
-
       <Route path="latest" component={Latest} />
       <Route path="search" component={Search} />
       <Route path="login" component={Login} />
