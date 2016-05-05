@@ -21,6 +21,7 @@ module.exports = () => {
       <Route path="latest" component={Latest} />
       <Route path="search" component={Search} />
       <Route path="login" component={Login} />
+
       <Route path="topics/:id" component={Detail} />
       <Route path="users/:id" component={Profile} />
       <Route path="*" component={NotFound} />

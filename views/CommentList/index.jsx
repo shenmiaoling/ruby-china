@@ -1,6 +1,6 @@
 import React from 'react'
-import RUBY_CHINA_API_V3_URL from '../../constants'
-import Detail from '../Detail'
+import {locales} from '../../settings'
+import Loader from '../Loader'
 import {Link} from 'react-router'
 require('./styles')
 module.exports=React.createClass({
@@ -10,16 +10,19 @@ module.exports=React.createClass({
     }
   },
   componentDidMount(){
-fetch(this.props.source).then((response)=>response.json()).then((responseJSON)=>{
-      if(responseJSON.replies) {
+    fetch(this.props.source).then((response)=>response.json()).then((responseJSON)=>{
         this.setState({
           replies:responseJSON.replies
         })
-      }
     })
   },
   render(){
-    return <div className='container'>
+    if (this.state.replies.length==0){
+      return <div className='container'>
+        <Loader style={{backgroundColor:'lightgray'}}/>
+      </div>
+    }
+    return <div className='replies-container'>
         {
           this.state.replies.map((reply)=>{
             return <div key={reply.id} className='reply'>

@@ -21,15 +21,27 @@ module.exports = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
 
-    fetch(RUBY_CHINA_API_URL + '/oauth/token?' + stringify(this.state.login), {
-      method: 'POST'
-    }).then((response) => response.json()).then((responseJSON) => {
-      if (responseJSON.access_token) {
-        localStorage.setItem('access_token', responseJSON.access_token)
+    // fetch(RUBY_CHINA_API_URL + '/oauth/token?' + stringify(this.state.login), {
+    //   method: 'POST'
+    // }).then((response) => response.json()).then((responseJSON) => {
+    //   if (responseJSON.access_token) {
+    //     localStorage.setItem('access_token', responseJSON.access_token)
+    //     this.props.setAuthorizedUser()
+    //     this.context.router.push('/')
+    //   }
+    // })
+    let xhr = new XMLHttpRequest();
+    if (xhr!=null){
+
+    xhr.open('POST',RUBY_CHINA_API_URL + '/oauth/token?' + stringify(this.state.login),false);
+    xhr.send();
+    let topickey=JSON.parse(xhr.response);
+    if (topickey.access_token) {
+        localStorage.setItem('access_token', topickey.access_token)
         this.props.setAuthorizedUser()
         this.context.router.push('/')
       }
-    })
+    }
   },
   handleChange(event){
     const login = this.state.login
