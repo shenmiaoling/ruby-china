@@ -127,6 +127,10 @@
 
 	var _Profile2 = _interopRequireDefault(_Profile);
 
+	var _replies = __webpack_require__(130);
+
+	var _replies2 = _interopRequireDefault(_replies);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = function () {
@@ -142,6 +146,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'topics/:id', component: _Detail2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'users/:id', component: _Profile2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'users/:id/replies', component: _replies2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
 	    )
 	  );
@@ -11548,10 +11553,6 @@
 
 	var _replies2 = _interopRequireDefault(_replies);
 
-	var _followers = __webpack_require__(269);
-
-	var _followers2 = _interopRequireDefault(_followers);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(131);
@@ -11726,8 +11727,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container', style: { display: this.state.navbarIndex === 3 ? '' : 'none' } },
-	          _react2.default.createElement(_replies2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/replies' }),
-	          _react2.default.createElement(_followers2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/followers' })
+	          _react2.default.createElement(_replies2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/replies' })
 	        )
 	      )
 	    );
@@ -28209,13 +28209,6 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 268 */,
-/* 269 */
-/***/ function(module, exports) {
-
-	"use strict";
 
 /***/ }
 /******/ ]);

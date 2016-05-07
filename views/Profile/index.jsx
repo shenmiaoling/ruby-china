@@ -4,7 +4,6 @@ import Loader from '../Loader'
 import {locales} from '../../settings'
 import {RUBY_CHINA_API_V3_URL} from '../../constants'
 import Replies from './section/replies'
-import Followers from './section/followers'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -71,7 +70,6 @@ module.exports=React.createClass({
           <span className='span7'>关注者</span>
           <div className='container' style={{display: this.state.navbarIndex === 3?'':'none'}}>
             <Replies source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/replies`}/>
-            <Followers source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/followers`} />
           </div>
         </div>
       </div>

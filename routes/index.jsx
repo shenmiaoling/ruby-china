@@ -13,6 +13,7 @@ import Detail from '../views/Detail'
 import Latest from '../views/Latest'
 import Search from '../views/Search'
 import Profile from '../views/Profile'
+import Replies from '../views/Profile/section/replies'
 module.exports = () => {
   return <Router history={browserHistory}>
     <Route path="/" component={Application}>
@@ -22,6 +23,7 @@ module.exports = () => {
       <Route path="login" component={Login} />
       <Route path="topics/:id" component={Detail} />
       <Route path="users/:id" component={Profile} />
+      <Route path='users/:id/replies' component={Replies}/>
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
