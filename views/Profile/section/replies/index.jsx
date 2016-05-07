@@ -22,7 +22,7 @@ module.exports=React.createClass({
         <Loader style={{backgroundColor:'lightgray'}}/>
       </div>
     }
-    return <div className='replies-container' style={{display: 'none'}}>
+    return <div className='replies-container'>
         {
           this.state.replies.map((reply)=>{
             return <div key={reply.id} className='reply'>

@@ -3,13 +3,14 @@ import React from 'react'
 import Loader from '../Loader'
 import {locales} from '../../settings'
 import {RUBY_CHINA_API_V3_URL} from '../../constants'
-import SectionOne from './section/one'
 import Replies from './section/replies'
+import Followers from './section/followers'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
     return{
-      user:null
+      user:null,
+      navbarIndex: 0
     }
   },
   componentDidMount(){
@@ -24,7 +25,7 @@ module.exports=React.createClass({
     })
   },
   handleClick(){
-    Replies
+    this.setState({navbarIndex: 3})
   },
   render(){
     let section = this.state.section;
@@ -61,15 +62,16 @@ module.exports=React.createClass({
           </div>
         </div>
         <div className='rightbar'>
-          <span className='span1' onClick={this.handleClick}>个人信息</span>
+          <span className='span1'>个人信息</span>
           <span className='span2'>帖子</span>
           <span className='span3' onClick={this.handleClick}>回帖</span>
           <span className='span4'>收藏</span>
           <span className='span5'>记事本</span>
           <span className='span6'>正在关注</span>
           <span className='span7'>关注者</span>
-          <div className='container'>
+          <div className='container' style={{display: this.state.navbarIndex === 3?'':'none'}}>
             <Replies source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/replies`}/>
+            <Followers source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/followers`} />
           </div>
         </div>
       </div>

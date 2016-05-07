@@ -8312,7 +8312,8 @@ a.bg-danger:focus, a.bg-danger:hover {
   position: absolute;
   margin-top: 30px;
   margin-left: 260px;
-  margin-right: 30px; }
+  margin-right: 30px;
+  cursor: pointer; }
 
 .span4 {
   position: absolute;

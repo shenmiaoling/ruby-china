@@ -127,10 +127,6 @@
 
 	var _Profile2 = _interopRequireDefault(_Profile);
 
-	var _replies = __webpack_require__(130);
-
-	var _replies2 = _interopRequireDefault(_replies);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = function () {
@@ -146,7 +142,6 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'topics/:id', component: _Detail2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'users/:id', component: _Profile2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'users/:id/replies', component: _replies2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
 	    )
 	  );
@@ -11549,13 +11544,13 @@
 
 	var _constants = __webpack_require__(105);
 
-	var _one = __webpack_require__(129);
-
-	var _one2 = _interopRequireDefault(_one);
-
 	var _replies = __webpack_require__(130);
 
 	var _replies2 = _interopRequireDefault(_replies);
+
+	var _followers = __webpack_require__(269);
+
+	var _followers2 = _interopRequireDefault(_followers);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11564,7 +11559,8 @@
 	  displayName: 'exports',
 	  getInitialState: function getInitialState() {
 	    return {
-	      user: null
+	      user: null,
+	      navbarIndex: 0
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -11583,7 +11579,7 @@
 	    });
 	  },
 	  handleClick: function handleClick() {
-	    _replies2.default;
+	    this.setState({ navbarIndex: 3 });
 	  },
 	  render: function render() {
 	    var section = this.state.section;
@@ -11694,7 +11690,7 @@
 	        { className: 'rightbar' },
 	        _react2.default.createElement(
 	          'span',
-	          { className: 'span1', onClick: this.handleClick },
+	          { className: 'span1' },
 	          '个人信息'
 	        ),
 	        _react2.default.createElement(
@@ -11729,8 +11725,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
-	          _react2.default.createElement(_replies2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/replies' })
+	          { className: 'container', style: { display: this.state.navbarIndex === 3 ? '' : 'none' } },
+	          _react2.default.createElement(_replies2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/replies' }),
+	          _react2.default.createElement(_followers2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/followers' })
 	        )
 	      )
 	    );
@@ -11738,33 +11735,7 @@
 	});
 
 /***/ },
-/* 129 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(11);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'pages-404' },
-	      _react2.default.createElement(
-	        'h1',
-	        { className: 'text-xs-center' },
-	        'hola'
-	      )
-	    );
-	  }
-	});
-
-/***/ },
+/* 129 */,
 /* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11813,7 +11784,7 @@
 	    }
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'replies-container', style: { display: 'none' } },
+	      { className: 'replies-container' },
 	      this.state.replies.map(function (reply) {
 	        return _react2.default.createElement(
 	          'div',
@@ -28238,6 +28209,13 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 268 */,
+/* 269 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);
