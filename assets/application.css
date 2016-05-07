@@ -8178,17 +8178,161 @@ a.bg-danger:focus, a.bg-danger:hover {
 
 .topics-detail-html img {
   max-width: 100%; }
+.reply img {
+  width: 42px;
+  height: auto;
+  margin-top: 50px; }
+
+.reply {
+  border-bottom: 1px solid #EAEAEA;
+  margin-top: 250px; }
+
+.reply .reply-body {
+  margin-left: 80px;
+  margin-top: -230px; }
+
+.replies-container {
+  position: absolute;
+  margin-top: 150px; }
+.body {
+  height: 100%; }
+
 .container-fluid {
-  background-color: #e9eaed; }
+  background-color: #e9eaed;
+  position: relative;
+  width: 100%;
+  height: 900px; }
 
 .container2 {
+  position: absolute;
   background-color: white;
-  width: 500px;
-  height: 500px;
-  margin-left: 120px; }
+  width: 400px;
+  height: 320px;
+  margin-left: 100px;
+  margin-top: 20px; }
+
+.container3 {
+  width: 400px;
+  height: 170px;
+  border-bottom: 1px solid #e9eaed; }
 
 .img-circle {
-  margin-left: 20px; }
+  position: relative;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 90px;
+  height: 90px; }
 
 .label-success {
-  margin-top: -100px; }
+  margin-top: 130px;
+  margin-left: -75px;
+  position: absolute; }
+
+.label-right {
+  margin-left: 200px;
+  margin-top: -120px; }
+
+.count {
+  position: absolute;
+  border-bottom: 1px solid #e9eaed;
+  width: 400px;
+  height: 100px; }
+
+.count1 {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  text-align: center;
+  font-size: 40px;
+  margin-right: 80px;
+  margin-left: 50px;
+  color: #356DD0; }
+
+.count2 {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  font-size: 40px;
+  margin-left: 150px;
+  text-align: center;
+  color: #356DD0; }
+
+.count3 {
+  position: absolute;
+  margin-left: 250px;
+  text-align: center;
+  width: 80px;
+  height: 50px;
+  font-size: 40px;
+  color: #356DD0; }
+
+.count-text {
+  position: absolute;
+  margin-top: 50px; }
+
+.count-text1 {
+  color: #999;
+  margin-left: 70px;
+  margin-right: 40px; }
+
+.count-text2 {
+  color: #999;
+  margin-right: 55px; }
+
+.count-text3 {
+  color: #999; }
+
+.bottom {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 80px;
+  color: #999; }
+
+.rightbar {
+  position: absolute;
+  margin-left: 550px;
+  margin-top: 20px;
+  width: 800px;
+  height: 1000px;
+  background-color: white; }
+
+.span1 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px; }
+
+.span2 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 160px;
+  margin-right: 30px; }
+
+.span3 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 260px;
+  margin-right: 30px; }
+
+.span4 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 360px;
+  margin-right: 30px; }
+
+.span5 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 460px;
+  margin-right: 30px; }
+
+.span6 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 560px;
+  margin-right: 30px; }
+
+.span7 {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 680px; }
