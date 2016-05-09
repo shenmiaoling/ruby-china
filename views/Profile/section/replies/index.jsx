@@ -15,6 +15,7 @@ module.exports=React.createClass({
           replies:responseJSON.replies
         })
     })
+
   },
   render(){
     if (this.state.replies.length==0){
