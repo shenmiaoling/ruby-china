@@ -1,7 +1,5 @@
 import React from 'react'
-import {locales} from '../../../../settings'
 import Loader from '../../../Loader'
-import {Link} from 'react-router'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -15,7 +13,6 @@ module.exports=React.createClass({
           replies:responseJSON.replies
         })
     })
-
   },
   render(){
     if (this.state.replies.length==0){

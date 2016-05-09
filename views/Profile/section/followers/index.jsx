@@ -2,6 +2,7 @@ import React from 'react'
 import {locales} from '../../../../settings'
 import Loader from '../../../Loader'
 import {Link} from 'react-router'
+require('./styles')
 module.exports=React.createClass({
   getInitialState(){
     return{
@@ -14,7 +15,6 @@ module.exports=React.createClass({
           followers:responseJSON.followers
         })
     })
-        console.log(this.state.followers)
   },
   render(){
     if (this.state.followers.length==0){
@@ -22,14 +22,19 @@ module.exports=React.createClass({
         <Loader style={{backgroundColor:'lightgray'}}/>
       </div>
     }
-    return <div className='replies-container'>
+    return <div className='followers-container'>
         {
           this.state.followers.map((followers)=>{
-            return <div key={followers.id} className='reply'>
-              <div dangerouslySetInnerHTML={{__html:followers.id}} className='reply-body'/>
+            return <div key={followers.id} className='follower'>
+            <img className="img-circle img1" src={followers.avatar_url}/>
+            <div dangerouslySetInnerHTML={{__html:followers.name}} className='followers-body'/>
             </div>
           })
         }
       </div>
   }
 })
+
+
+
+

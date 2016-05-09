@@ -5,6 +5,7 @@ import {locales} from '../../settings'
 import {RUBY_CHINA_API_V3_URL} from '../../constants'
 import Replies from './section/replies'
 import Followers from './section/followers'
+import Following from './section/followers'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -19,13 +20,18 @@ module.exports=React.createClass({
         this.setState({
           user:responseJSON.user
         })
-        console.log(this.state.user)
         document.title = responseJSON.user.name
       }
     })
   },
-  handleClick(){
+  handleReplies(){
     this.setState({navbarIndex: 3})
+  },
+  handleFollowers(){
+    this.setState({navbarIndex: 7})
+  },
+  handleFollwing(){
+    this.setState({navbarIndex: 6})
   },
   render(){
     let section = this.state.section;
@@ -64,18 +70,20 @@ module.exports=React.createClass({
         <div className='rightbar'>
           <span className='span1'>个人信息</span>
           <span className='span2'>帖子</span>
-          <span className='span3' onClick={this.handleClick}>回帖</span>
+          <span className='span3' onClick={this.handleReplies}>回帖</span>
           <span className='span4'>收藏</span>
           <span className='span5'>记事本</span>
-          <span className='span6'>正在关注</span>
-          <span className='span7'>关注者</span>
+          <span className='span6' onClick={this.handleFollwing}>正在关注</span>
+          <span className='span7' onClick={this.handleFollowers}>关注者</span>
           <div className='container' style={{display: this.state.navbarIndex === 3?'':'none'}}>
             <Replies source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/replies`}/>
           </div>
-          <div className='container' >
-            <Replies source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/followers`}/>
+          <div className='container'style={{display:this.state.navbarIndex === 7?'':'none'}} >
+            <Followers source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/followers`}/>
           </div>
-
+          <div className='container'style={{display:this.state.navbarIndex === 6?'':'none'}} >
+          <Followers source={`${RUBY_CHINA_API_V3_URL}/users/${this.state.user.login}/followers`}/>
+          </div>
         </div>
       </div>
 

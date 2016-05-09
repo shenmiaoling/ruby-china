@@ -11578,13 +11578,18 @@
 	        _this.setState({
 	          user: responseJSON.user
 	        });
-	        console.log(_this.state.user);
 	        document.title = responseJSON.user.name;
 	      }
 	    });
 	  },
-	  handleClick: function handleClick() {
+	  handleReplies: function handleReplies() {
 	    this.setState({ navbarIndex: 3 });
+	  },
+	  handleFollowers: function handleFollowers() {
+	    this.setState({ navbarIndex: 7 });
+	  },
+	  handleFollwing: function handleFollwing() {
+	    this.setState({ navbarIndex: 6 });
 	  },
 	  render: function render() {
 	    var section = this.state.section;
@@ -11705,7 +11710,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'span',
-	          { className: 'span3', onClick: this.handleClick },
+	          { className: 'span3', onClick: this.handleReplies },
 	          '回帖'
 	        ),
 	        _react2.default.createElement(
@@ -11720,12 +11725,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'span',
-	          { className: 'span6' },
+	          { className: 'span6', onClick: this.handleFollwing },
 	          '正在关注'
 	        ),
 	        _react2.default.createElement(
 	          'span',
-	          { className: 'span7' },
+	          { className: 'span7', onClick: this.handleFollowers },
 	          '关注者'
 	        ),
 	        _react2.default.createElement(
@@ -11735,8 +11740,13 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
-	          _react2.default.createElement(_replies2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/followers' })
+	          { className: 'container', style: { display: this.state.navbarIndex === 7 ? '' : 'none' } },
+	          _react2.default.createElement(_followers2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/followers' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container', style: { display: this.state.navbarIndex === 6 ? '' : 'none' } },
+	          _react2.default.createElement(_followers2.default, { source: _constants.RUBY_CHINA_API_V3_URL + '/users/' + this.state.user.login + '/followers' })
 	        )
 	      )
 	    );
@@ -11753,13 +11763,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _settings = __webpack_require__(102);
-
 	var _Loader = __webpack_require__(111);
 
 	var _Loader2 = _interopRequireDefault(_Loader);
-
-	var _reactRouter = __webpack_require__(42);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28239,6 +28245,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	__webpack_require__(269);
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
 	  getInitialState: function getInitialState() {
@@ -28256,7 +28263,6 @@
 	        followers: responseJSON.followers
 	      });
 	    });
-	    console.log(this.state.followers);
 	  },
 	  render: function render() {
 	    if (this.state.followers.length == 0) {
@@ -28268,17 +28274,24 @@
 	    }
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'replies-container' },
+	      { className: 'followers-container' },
 	      this.state.followers.map(function (followers) {
 	        return _react2.default.createElement(
 	          'div',
-	          { key: followers.id, className: 'reply' },
-	          _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: followers.id }, className: 'reply-body' })
+	          { key: followers.id, className: 'follower' },
+	          _react2.default.createElement('img', { className: 'img-circle img1', src: followers.avatar_url }),
+	          _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: followers.name }, className: 'followers-body' })
 	        );
 	      })
 	    );
 	  }
 	});
+
+/***/ },
+/* 269 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
