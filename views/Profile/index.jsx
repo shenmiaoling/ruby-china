@@ -3,9 +3,7 @@ import Loader from '../Loader'
 import {locales} from '../../settings'
 import {RUBY_CHINA_API_V3_URL} from '../../constants'
 import {Link} from 'react-router'
-import Replies from './section/replies'
-import Followers from './section/followers'
-import Following from './section/followers'
+import superagent from 'superagent'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -14,14 +12,21 @@ module.exports=React.createClass({
       navbarIndex: 0
     }
   },
+  // componentDidMount(){
+  //   fetch(`${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}`).then((response)=>response.json()).then((responseJSON)=>{
+  //     if(responseJSON.user) {
+  //       this.setState({
+  //         user:responseJSON.user
+  //       })
+  //       document.title = responseJSON.user.name
+  //     }
+  //   })
+  // },
   componentDidMount(){
-    fetch(`${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}`).then((response)=>response.json()).then((responseJSON)=>{
-      if(responseJSON.user) {
+    superagent(`${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}`).end((err,response)=>{
         this.setState({
-          user:responseJSON.user
+          user:response.user
         })
-        document.title = responseJSON.user.name
-      }
     })
   },
   render(){
@@ -60,14 +65,23 @@ module.exports=React.createClass({
         </div>
         <div className='rightbar'>
           <span className='span1'>个人信息</span>
-          <span className='span2'>帖子</span>
+          <Link to={`/users/${this.state.user.login}/topics`}>
+            <span className='span2'>帖子</span>
+          </Link>
           <Link to={`/users/${this.state.user.login}/replies`}>
             <span className='span3'>回帖</span>
           </Link>
-          <span className='span4'>收藏</span>
+          <Link to={`/users/${this.state.user.login}/favorites`}>
+            <span className='span4'>收藏</span>
+          </Link>
           <span className='span5'>记事本</span>
-          <span className='span6'>正在关注</span>
-          <span className='span7'>关注者</span>
+          <Link to={`/users/${this.state.user.login}/following`}>
+            <span className='span6'>正在关注</span>
+          </Link>
+          <Link to={`/users/${this.state.user.login}/followers`}>
+            <span className='span7'>关注者</span>
+          </Link>
+          {this.props.children}
         </div>
       </div>
 

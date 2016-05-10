@@ -43,8 +43,8 @@ module.exports = React.createClass({
     <table className="table topics-table">
       <tbody>
         {
-          this.state.topics.map((topic) => {
-            return <tr key={topic.id}>
+          this.state.topics.map((topic,index) => {
+            return <tr key={index}>
               <td>
                 <Link to={`/users/${topic.user.login}`}>
                   <img src={topic.user.avatar_url} className="img-circle" />

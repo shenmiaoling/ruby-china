@@ -1,5 +1,7 @@
 import React from 'react'
 import Loader from '../../../Loader'
+import {RUBY_CHINA_API_V3_URL} from '../../../../constants'
+require('./styles')
 module.exports=React.createClass({
   getInitialState(){
     return{
@@ -7,15 +9,19 @@ module.exports=React.createClass({
     }
   },
   componentDidMount(){
-    fetch(this.props.source).then((response)=>response.json()).then((responseJSON)=>{
+    fetch(`${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}/following`).then((response)=>response.json()).then((responseJSON)=>{
         this.setState({
           following:responseJSON.following
         })
     })
   },
   render(){
-    if (this.state.following && this.state.following.length > 0){
-      return <div className='following-container'>
+    if (this.state.following.length==0){
+      return <div className='container'>
+        <Loader style={{backgroundColor:'lightgray'}}/>
+      </div>
+    }
+    return <div className='following-container'>
         {
           this.state.following.map((following)=>{
             return <div key={following.id} className='following'>
@@ -26,10 +32,5 @@ module.exports=React.createClass({
         }
       </div>
     }
-    return
-      <div className='container'>
-        <Loader style={{backgroundColor:'lightgray'}}/>
-      </div>
 
-  }
 })

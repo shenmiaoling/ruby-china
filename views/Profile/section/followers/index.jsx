@@ -2,6 +2,7 @@ import React from 'react'
 import {locales} from '../../../../settings'
 import Loader from '../../../Loader'
 import {Link} from 'react-router'
+import {RUBY_CHINA_API_V3_URL} from '../../../../constants'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -10,7 +11,7 @@ module.exports=React.createClass({
     }
   },
   componentDidMount(){
-    fetch(this.props.source).then((response)=>response.json()).then((responseJSON)=>{
+    fetch(`${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}/followers`).then((response)=>response.json()).then((responseJSON)=>{
         this.setState({
           followers:responseJSON.followers
         })
