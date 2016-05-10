@@ -1,5 +1,7 @@
 import React from 'react'
 import Loader from '../../../Loader'
+import { RUBY_CHINA_API_V3_URL }from '../../../../constants'
+import Profiles from '../../../../views/Profile'
 require('./styles')
 module.exports=React.createClass({
   getInitialState(){
@@ -8,7 +10,8 @@ module.exports=React.createClass({
     }
   },
   componentDidMount(){
-    fetch(this.props.source).then((response)=>response.json()).then((responseJSON)=>{
+    let url = `${RUBY_CHINA_API_V3_URL}/users/${this.props.params.id}/replies`
+    fetch(url).then((response)=>response.json()).then((responseJSON)=>{
         this.setState({
           replies:responseJSON.replies
         })
@@ -21,6 +24,7 @@ module.exports=React.createClass({
       </div>
     }
     return <div className='replies-container'>
+
         {
           this.state.replies.map((reply)=>{
             return <div key={reply.id} className='reply'>
